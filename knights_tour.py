@@ -6,10 +6,8 @@ def print_board(board):
         print(i)
 
 def move(start_x, start_y, board):
-    if check_status(board) == False:
-        pass
-    else:
-        return True
+    if check_status(board):
+        return board
     for i in range(8):
         new_x = start_x + move_x[i]
         new_y = start_y + move_y[i]
@@ -19,9 +17,9 @@ def move(start_x, start_y, board):
             continue
         if board[new_y][new_x] == -1:    # not visited
             board[new_y][new_x] = board[start_y][start_x] + 1
-            if move(new_x, new_y, board) == True:
-                print_board(board)
-                return True
+            if move(new_x, new_y, board) == board:
+                # print_board(board)
+                return board
             else:
                 board[new_y][new_x] = -1
     else:
@@ -59,6 +57,7 @@ def solve():
     board = [[-1 for i in range(8)] for i in range(8)]
     board[0][0] = 0     # starting cell
     ans = move(0, 0, board)
+    print_board(ans)
     if ans == False:
         print('solution does not exist')
     else:
