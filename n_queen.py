@@ -51,6 +51,9 @@ def place(col, N, board):
 
 
 def place_2(col, N, board, solutions):
+    '''
+    Find all solutions to the problem
+    '''
     if col == N:
         board = [[i for i in row] for row in board]     # A copy of the board is required
         solutions.append(board)
@@ -58,7 +61,7 @@ def place_2(col, N, board, solutions):
     for i in range(N):
         if is_safe(i, col, N, board):
             board[i][col] = 1
-            solutions+place_2(col + 1, N, board, solutions)
+            solutions+place_2(col + 1, N, board, solutions)     # where the magic happens
             board[i][col] = 0
     return solutions
 
