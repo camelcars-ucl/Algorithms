@@ -54,12 +54,6 @@ def traverse(node, words):
 #         root.insert(i, value)
 #     words = []
 
-# def is_safe(x, y, visited):
-#     if 
-# def solve(x, y, dictionary, boggle, visited):
-#     for i in range(N):
-#         for x in range(M):
-
 def solve(start_i, start_x, visited, some_word):
     if some_word in dictionary:
         if some_word not in all_words:
@@ -73,7 +67,6 @@ def solve(start_i, start_x, visited, some_word):
             continue
         if visited[next_i][next_x] == False:
             visited[next_i][next_x] = True
-            # print(next_i, next_x)
             solve(next_i, next_x, visited, some_word + boggle[next_i][next_x])
             visited[next_i][next_x] = False
         else:
@@ -82,6 +75,9 @@ def solve(start_i, start_x, visited, some_word):
 
 
 def pack(arr, step):
+    '''
+    divides an array into smaller chunks
+    '''
     if step == 1:   # edge case
         return [[i] for i in arr]
     new_arr = []
